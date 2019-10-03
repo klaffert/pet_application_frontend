@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Filters from "./components/Filters";
+import PetBrowser from "./components/PetBrowser";
+import Favorites from "./components/Favorites"
+import Login from "./components/Login";
+import HomePage from "./components/HomePage";
+import NavBar from './components/NavBar'
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+import "./App.css";
+
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <Route path= '/' component={NavBar}/>
+          <Route exact path="/" component={Login} /> 
+          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/pets" component={PetBrowser} />
+          <Route exact path="/pets" component={Filters} />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

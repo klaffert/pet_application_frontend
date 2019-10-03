@@ -1,22 +1,191 @@
-.App {
+@import url("https://fonts.googleapis.com/css?family=Libre+Caslon+Display&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap");
+
+* {
+  font-family: "Libre Caslon Display", serif;
+  box-sizing: border-box;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #31708e;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
   text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 0%;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4caf50;
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.App {
+  text-align: center;
+  background-color: white;
 }
+
+#homepage {
+  margin-top: 0%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+#formdiv {
+  margin-top: 10%;
+}
+
+.loginform {
+  margin-top: 30%;
+  margin-bottom: 30%;
+}
+
+.formbutton:hover {
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("https://www.condorferries.co.uk/media/2455/taking-your-pet-5.jpg");
+
+  /* Control the height of the image */
+  min-height: 1000px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Add styles to the form container */
+.container {
+  height: 200px;
+  left: 66%;
+  top: 80%;
+  margin-left: -25%;
+  position: absolute;
+  margin-top: -25%;
+}
+
+.ui.selection.dropdown {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  font-size: 20pt;
+  border: none;
+  background: #f1f1f1;
+  font-size: 24pt;
+  border: 1px solid black;
+
+
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  font-size: 20pt;
+
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #f1f1f1;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #31708e;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 20pt;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.ui.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+  background-color: #ececec;
+}
+
+div.ui.form {
+  background-color: #ececec;
+  font-size: 20pt;
+}
+
+.ui.card {
+  box-shadow: 0px 1px 5px #555;
+  background-color: white;
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+.img {
+  background-size: cover;
+  min-height: 180px;
+  background-position: center;
+  background-color: #ccc;
+} 
+
+div.content {
+  padding: .5rem;
+  line-height: 1.6em;
+  font-size: 20pt;
+}
+
+button.ui.primary.button {
+  display: flexbox;
+  background-color: tomato;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: .3s ease-out;
+  font-size: 24pt;
+}
+
+button.ui.secondary.button {
+  display: flexbox;
+  background-color: tomato;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: .3s ease-out;
+  font-size: 24pt;
+}
+
