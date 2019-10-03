@@ -1,44 +1,139 @@
 import React from "react";
 import Pet from "./Pet";
-import Filters from "./Filters";
+// import Filters from "./Filters";
 
 var favoritesUrl = "http://localhost:3001/favorites";
 
 
 class PetBrowser extends React.Component {
-  state = {
-    gender: "",
-    size: "",
-    age: "",
-    filteredPets: []
-  };
+    constructor(props){
+        super(props)
+        this.state = {
+            gender: "",
+            size: "",
+            age: "",
+            filteredPets:[]
+          };
 
-  updateGender = event => {
-    this.setState(
-      {
-        gender: event.target.value
-      },
-      this.filterByGender
-    );
-  };
 
-  filterByGender = () => {
-    const newPets = this.props.pets.filter(pet => pet.gender === this.state.gender)
+    
+    }
+
+    showFavoritePets = () => {
+        var favoritePets = 'http://localhost:3001/search'
+
+        fetch(favoritePets)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            this.setState({
+                favoritePets: data
+            })
+        })
+    }
+  
+
+  onAdoptPet = (pet) => {
+
+    // const {user_id} = localStorage.user
+    // var pet_string = JSON.stringify(pet)
+    // debugger
+      fetch(favoritesUrl, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            "user_id": localStorage.user,
+            "pet_id": pet
+          })
+        })
+      }
+
+    
+  handleChange = (event) => {
+      console.log("input from form",event.target.value)
+    const newPets = this.props.pets.filter(pet => {
+        console.log("pets data",pet.gender)
+      return   pet.gender === event.target.value 
+    })
     this.setState({
       filteredPets: newPets 
     })
+   
   }
 
+
+
+//   updateGender = event => {
+
+//      console.log(this.props)
+//     this.setState(
+//       {
+//         gender: event.target.value
+//       },
+//       this.filterByGender
+//     );
+//   };
+
+//   filterByGender = () => {
+//       console.log("lllllll")
+//     const newPets = this.props.pets.filter(pet => {
+//         console.log(pet.gender)
+//       return   pet.gender === this.state.gender
+//     })
+//     this.setState({
+//       filteredPets: newPets 
+//     })
+//   }
+
   displayPets = () => {
-    return this.props.pets.map((pet, index) => {
-      return <Pet key={index} pet={pet} onAdoptPet={this.props.onAdoptPet} />;
+    return this.state.filteredPets.map((pet, index) => {
+      return <Pet key={index} pet={pet} onAdoptPet={this.onAdoptPet}/>;
     });
   };
 
   render() {
     return (
       <div>
-        <Filters onUpdateGender={this.updateGender} onFilterPets={this.filterByGender} />
+          <div>
+      <div>
+      <select
+        className="ui selection dropdown"
+        onChange={this.handleChange}
+      >
+        <option value="">Filter by Gender...</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+      </select>
+    </div>
+    
+    <div>
+    <select
+      className="ui selection dropdown"
+      onChange={this.handleChange}
+    >
+      <option value="">Filter by Size...</option>
+      <option value="small">Small</option>
+      <option value="Medium">Medium</option>
+      <option value="Large">Large</option>
+      <option value="xLarge">X-Large</option>
+    </select>
+  </div>
+
+  <div>
+    <select
+      className="ui selection dropdown"
+      onChange={this.handleChange}
+    >
+      <option value="">Filter by Age...</option>
+      <option value="baby">Baby</option>
+      <option value="young">Young</option>
+      <option value="adult">Adult</option>
+      <option value="senior">Senior</option>
+    </select>
+  </div>
+  </div>
+        {/* <Filters onUpdateGender={this.updateGender} onFilterPets={this.filterByGender} /> */}
         <div className="ui cards">{this.displayPets()}</div>
       </div>
     );

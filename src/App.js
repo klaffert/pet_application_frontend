@@ -11,6 +11,15 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       
+    }
+  }
+  
   render() {
     return (
       <div className="App">
@@ -18,7 +27,7 @@ class App extends React.Component {
           <Route path= '/' component={NavBar}/>
           <Route exact path="/" component={Login} /> 
           <Route exact path="/home" component={HomePage} />
-          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/favorites" render={(props) => <Favorites {...props}/>}/>
           <Route exact path="/pets" component={PetBrowser} />
           <Route exact path="/pets" component={Filters} />
         </Router>

@@ -11,7 +11,8 @@ class HomePage extends React.Component {
     this.state = {
       pets: [],
       type: "",
-      location: ""
+      location: "",
+      filteredPets: []
     };
   }
 
@@ -60,7 +61,7 @@ class HomePage extends React.Component {
           pet.isAdopted = true;
         }
       });
-      console.log(newPets);
+    //   console.log(newPets);
       return { pets: newPets };
     });
   };
@@ -92,17 +93,16 @@ class HomePage extends React.Component {
                 />
               </div>
 
-              <Link to='/pets'>
-              <button type="submit" className="btn" onClick={this.getPets}>
-                Find Pets
-              </button>
+              <Link to="/pets">
+                <button type="submit" className="btn" onClick={this.getPets}>
+                  Find Pets
+                </button>
               </Link>
-
             </form>
           </div>
         </div>
         <div className="twelve wide column">
-          <PetBrowser onAdoptPet={this.adoptPet} pets={this.state.pets} />
+          <PetBrowser onAdoptPet={this.adoptPet} pets={this.state.pets} filteredPets={this.state.pets}/>
         </div>
       </div>
     );
