@@ -51,10 +51,10 @@ class PetBrowser extends React.Component {
 
     
   handleChange = (event) => {
-      console.log("input from form",event.target.value)
+      console.log("input from form",event.target.name)
     const newPets = this.props.pets.filter(pet => {
         console.log("pets data",pet.gender)
-      return   pet.gender === event.target.value 
+      return pet[event.target.name] === event.target.value
     })
     this.setState({
       filteredPets: newPets 
@@ -100,6 +100,7 @@ class PetBrowser extends React.Component {
       <select
         className="ui selection dropdown"
         onChange={this.handleChange}
+        name="gender"
       >
         <option value="">Filter by Gender...</option>
         <option value="Female">Female</option>
@@ -111,6 +112,7 @@ class PetBrowser extends React.Component {
     <select
       className="ui selection dropdown"
       onChange={this.handleChange}
+      name="size"
     >
       <option value="">Filter by Size...</option>
       <option value="small">Small</option>
@@ -124,12 +126,13 @@ class PetBrowser extends React.Component {
     <select
       className="ui selection dropdown"
       onChange={this.handleChange}
+      name="age"
     >
       <option value="">Filter by Age...</option>
-      <option value="baby">Baby</option>
-      <option value="young">Young</option>
-      <option value="adult">Adult</option>
-      <option value="senior">Senior</option>
+      <option value="Baby">Baby</option>
+      <option value="Young">Young</option>
+      <option value="Adult">Adult</option>
+      <option value="Senior">Senior</option>
     </select>
   </div>
   </div>
